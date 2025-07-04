@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taskmanagement.mappers.mysql.SessionDao">
+
+    <insert id="create"
+            useGeneratedKeys="true">
+        INSERT INTO SESSION
+        ( USER_ID, USERNAME, USER_ROLE, TOKEN, CREATED_ON, EXPIRY_AT)
+        VALUES(#{userId},#{username}, #{userRole},#{token},#{createdOn}, #{expiryAt});
+    </insert>
+
+
+    <delete id="clear" parameterType="java.lang.String">
+        DELETE FROM SESSION
+        WHERE TOKEN = #{token};
+    </delete>
+
+    <select id="getSession" resultType="com.taskmanagement.models.Session">
+        SELECT * FROM SESSION
+        WHERE username = #{username} AND TOKEN = #{token}
+        LIMIT 1;
+    </select>
+
+    <delete id="clearByExpiryDate" parameterType="map">
+        DELETE FROM SESSION
+        WHERE USERNAME = #{username} AND EXPIRY_AT &lt; #{date}
+    </delete>
+
+
+
+</mapper>

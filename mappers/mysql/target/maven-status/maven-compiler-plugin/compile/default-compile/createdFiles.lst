@@ -1,0 +1,5 @@
+com\sushikhacapitals\mappers\mysql\LoanUserDao.class
+com\sushikhacapitals\mappers\mysql\SushikhaUserDao.class
+com\sushikhacapitals\mappers\mysql\ApplyLoanDao.class
+com\sushikhacapitals\mappers\mysql\SessionDao.class
+com\sushikhacapitals\mappers\mysql\OTPdao.class

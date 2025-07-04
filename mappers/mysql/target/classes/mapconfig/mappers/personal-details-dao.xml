@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sushikhacapitals.mappers.mysql.PersonalDetailsDao">
+
+    <resultMap id="ownerMap" type="com.sushikhacapitals.models.PersonalDetails">
+        <id property="id" column="ID"/>
+        <result property="personalDetailsId" column="PERSONAL_DETAILS_ID"/>
+        <result property="userId" column="USER_ID"/>
+        <result property="firstName" column="FIRST_NAME"/>
+        <result property="lastName" column="LAST_NAME"/>
+        <result property="dob" column="DOB"/>
+        <result property="employmentType" column="EMPLOYMENT_TYPE"/>
+        <result property="gender" column="GENDER"/>
+        <result property="status" column="STATUS"/>
+        <result property="emailVerified" column="EMAIL_VERIFIED"/>
+        <result property="phoneVerified" column="PHONE_VERIFIED"/>
+        <result property="createdOn" column="CREATED_ON"/>
+        <result property="createdBy" column="CREATED_BY"/>
+        <result property="updatedOn" column="UPDATED_ON"/>
+        <result property="updatedBy" column="UPDATED_BY"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.sushikhacapitals.models.PersonalDetails"
+            useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO PERSONAL_DETAILS
+        (PERSONAL_DETAILS_ID, USER_ID, FIRST_NAME, LAST_NAME, DOB, EMPLOYMENT_TYPE, GENDER, STATUS, EMAIL_VERIFIED, PHONE_VERIFIED, CREATED_ON, CREATED_BY)
+        VALUES(
+        #{personalDetails.personalDetailsId},
+        #{personalDetails.userId},
+        #{personalDetails.firstName},
+        #{personalDetails.lastName},
+        #{personalDetails.dob},
+        #{personalDetails.employmentType},
+        #{personalDetails.gender},
+        #{personalDetails.status},
+        #{personalDetails.emailVerified},
+        #{personalDetails.phoneVerified},
+        #{personalDetails.createdOn},
+        #{personalDetails.createdBy}
+        )
+    </insert>
+
+
+</mapper>

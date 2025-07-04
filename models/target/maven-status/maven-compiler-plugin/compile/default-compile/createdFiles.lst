@@ -1,0 +1,14 @@
+com\sushikhacapitals\models\enums\EntityType.class
+com\sushikhacapitals\models\OTP.class
+com\sushikhacapitals\models\enums\Gender.class
+com\sushikhacapitals\models\ApplyLoan.class
+com\sushikhacapitals\models\enums\UuidPrefix.class
+com\sushikhacapitals\models\enums\OTPMediumType.class
+com\sushikhacapitals\models\enums\OTPStatus.class
+com\sushikhacapitals\models\Address.class
+com\sushikhacapitals\models\enums\Country.class
+com\sushikhacapitals\models\enums\UserRole.class
+com\sushikhacapitals\models\enums\UserStatus.class
+com\sushikhacapitals\models\LoanUser.class
+com\sushikhacapitals\models\Session.class
+com\sushikhacapitals\models\SushikhaUser.class

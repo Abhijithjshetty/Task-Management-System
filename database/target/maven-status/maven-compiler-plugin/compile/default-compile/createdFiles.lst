@@ -1,0 +1,3 @@
+com\sushikhacapitals\database\config\MyBatisConfig.class
+com\sushikhacapitals\database\model\DBConfig.class
+com\sushikhacapitals\database\config\DatabaseConfiguration.class

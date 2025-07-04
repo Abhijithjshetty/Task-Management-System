@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: sushikha-core-api
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 20MB
+  profiles:
+    active: @activatedProperties@
+
+server:
+  servlet:
+    context-path: /${spring.application.name}
+    session:
+      cookie:
+        http-only: true
+
+mybatis:
+  configLocation: classpath:mapconfig/config.xml
+
+
+

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sushikhacapitals.mappers.mysql.OTPdao">
+
+    <insert id="insertOTP" parameterType="com.sushikhacapitals.models.OTP"
+            useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO CONTACT_VERIFICATION_OTP
+        (OTP_ID, ENTITY_ID, ENTITY, VALUE,GENERATED_BY, CREATED_ON, EXPIRY_ON, MEDIUM_TYPE, ENTITY_TYPE, STATUS)
+        VALUES(#{otp.otpId},
+        #{otp.entityId},
+        #{otp.entity},
+        #{otp.value},
+        #{otp.generatedBy},
+        #{otp.createdOn},
+        #{otp.expiryOn},
+        #{otp.mediumType},
+        #{otp.entityType},
+        #{otp.status});
+
+    </insert>
+    <update id="updateOTP">
+        UPDATE CONTACT_VERIFICATION_OTP
+        SET STATUS= #{status}, UPDATED_ON=#{updatedOn}
+        WHERE OTP_ID= #{otpId};
+    </update>
+
+    <select id="getOTP" resultType="com.sushikhacapitals.models.OTP">
+        SELECT *
+        FROM CONTACT_VERIFICATION_OTP
+        WHERE OTP_ID= #{otpId} LIMIT 1
+    </select>
+
+    <select id="getOTPByEntityId" resultType="com.sushikhacapitals.models.OTP">
+        SELECT *
+        FROM CONTACT_VERIFICATION_OTP
+        WHERE ENTITY_ID = #{entityId}
+        ORDER BY CREATED_ON DESC
+        LIMIT 1
+    </select>
+
+    <select id="selectUserNameByOtpId" parameterType="java.lang.String"
+            resultType="java.lang.String">
+        SELECT L.USERNAME AS PHONE
+        FROM CONTACT_VERIFICATION_OTP C
+        JOIN LOAN_USER L ON C.ENTITY_ID = L.USER_ID
+        WHERE C.OTP_ID = #{otpId};
+    </select>
+
+
+    <select id="isPhoneVerified" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        SELECT CASE
+        WHEN COUNT(*) > 0 THEN TRUE
+        ELSE FALSE
+        END
+        FROM CONTACT_VERIFICATION_OTP
+        WHERE ENTITY_ID = #{entityId}
+        AND MEDIUM_TYPE = 'PHONE'
+        AND STATUS = 'VERIFIED';
+    </select>
+
+    <select id="isEmailVerified" parameterType="java.lang.String" resultType="java.lang.Boolean">
+        SELECT CASE
+        WHEN COUNT(*) > 0 THEN TRUE
+        ELSE FALSE
+        END
+        FROM CONTACT_VERIFICATION_OTP
+        WHERE ENTITY_ID = #{entityId}
+        AND MEDIUM_TYPE = 'EMAIL'
+        AND STATUS = 'VERIFIED';
+    </select>
+
+
+</mapper>

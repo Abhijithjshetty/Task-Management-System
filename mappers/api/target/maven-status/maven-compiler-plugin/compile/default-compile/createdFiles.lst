@@ -1,0 +1,5 @@
+com\sushikhacapitals\mappers\api\LoanUserDao.class
+com\sushikhacapitals\mappers\api\SessionDao.class
+com\sushikhacapitals\mappers\api\SushikhaUserDao.class
+com\sushikhacapitals\mappers\api\OTPdao.class
+com\sushikhacapitals\mappers\api\ApplyLoanDao.class

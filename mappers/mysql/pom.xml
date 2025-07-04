@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.taskmanagement.mappers</groupId>
+        <artifactId>task-mappers</artifactId>
+        <version>0.0.1</version>
+    </parent>
+    <artifactId>task-mappers-mysql</artifactId>
+    <groupId>com.taskmanagement.mappers.mysql</groupId>
+    <name>TaskManagement Mapper MYSQL</name>
+
+    <properties>
+        <org.mybatis.version>3.5.14</org.mybatis.version>
+        <org.mybatis.starter.version>3.0.3</org.mybatis.starter.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.taskmanagement.models</groupId>
+            <artifactId>task-models</artifactId>
+            <version>0.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- My batis SQL mapper framework-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${org.mybatis.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.taskmanagement.mappers.api</groupId>
+            <artifactId>task-mappers-api</artifactId>
+            <version>0.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+</project>

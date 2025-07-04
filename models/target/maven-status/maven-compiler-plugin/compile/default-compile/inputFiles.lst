@@ -1,0 +1,14 @@
+C:\capitals-backend\models\src\main\java\com\sushikhacapitals\models\Address.java
+C:\capitals-backend\models\src\main\java\com\sushikhacapitals\models\enums\Gender.java
+C:\capitals-backend\models\src\main\java\com\sushikhacapitals\models\OTP.java
+C:\capitals-backend\models\src\main\java\com\sushikhacapitals\models\enums\Country.java
+C:\capitals-backend\models\src\main\java\com\sushikhacapitals\models\enums\UuidPrefix.java
+C:\capitals-backend\models\src\main\java\com\sushikhacapitals\models\LoanUser.java
+C:\capitals-backend\models\src\main\java\com\sushikhacapitals\models\enums\UserStatus.java
+C:\capitals-backend\models\src\main\java\com\sushikhacapitals\models\enums\OTPStatus.java
+C:\capitals-backend\models\src\main\java\com\sushikhacapitals\models\SushikhaUser.java
+C:\capitals-backend\models\src\main\java\com\sushikhacapitals\models\enums\OTPMediumType.java
+C:\capitals-backend\models\src\main\java\com\sushikhacapitals\models\Session.java
+C:\capitals-backend\models\src\main\java\com\sushikhacapitals\models\ApplyLoan.java
+C:\capitals-backend\models\src\main\java\com\sushikhacapitals\models\enums\EntityType.java
+C:\capitals-backend\models\src\main\java\com\sushikhacapitals\models\enums\UserRole.java

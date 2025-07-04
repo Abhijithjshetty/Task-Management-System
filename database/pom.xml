@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.taskmanagement</groupId>
+        <artifactId>task</artifactId>
+        <version>0.0.1</version>
+    </parent>
+    <groupId>com.taskmanagement.database</groupId>
+    <packaging>jar</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>task-database</artifactId>
+    <version>0.0.1</version>
+    <properties>
+        <org.mybatis.starter.version>3.0.3</org.mybatis.starter.version>
+        <maven.compiler.source>1.5</maven.compiler.source>
+        <maven.compiler.target>1.5</maven.compiler.target>
+    </properties>
+    <dependencies>
+
+        <dependency>
+            <groupId>com.taskmanagement.common</groupId>
+            <artifactId>task-commons</artifactId>
+            <version>0.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- My batis auto configuration -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${org.mybatis.starter.version}</version>
+        </dependency>
+
+        <!-- mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
+        </dependency>
+
+
+
+    </dependencies>
+    <name>TaskManagement Database</name>
+
+
+</project>
