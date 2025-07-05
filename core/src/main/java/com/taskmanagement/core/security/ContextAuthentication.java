@@ -15,8 +15,9 @@ import java.util.Optional;
 @Slf4j
 @Component
 public class ContextAuthentication {
+
     @Autowired
-    UserDao userDao;
+    private UserDao userDao;
 
     public User getCurrentUser() {
         SecurityContext securityContext = SecurityContextHolder.getContext();

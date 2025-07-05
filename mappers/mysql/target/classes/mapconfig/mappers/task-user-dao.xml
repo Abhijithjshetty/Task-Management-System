@@ -7,114 +7,47 @@
 
     <insert id="insert" parameterType="com.taskmanagement.models.TaskUser"
             useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO SUSHIKHA_USER
-        (SUSHIKHA_USER_ID, NAME, EMAIL, PHONE, DOB, STATUS, CITY, PINCODE, PHONE_VERIFIED, EMAIL_VERIFIED, CREATED_ON)
+        INSERT INTO TASK_USER
+        (TASK_USER_ID, NAME, EMAIL, DOB, STATUS, ROLE, GENDER, CREATED_ON)
         VALUES(
-        #{sushikhaUser.sushikhaUserId},
-        #{sushikhaUser.name},
-        #{sushikhaUser.email},
-        #{sushikhaUser.phone},
-        #{sushikhaUser.dob},
-        #{sushikhaUser.status},
-        #{sushikhaUser.city},
-        #{sushikhaUser.pincode},
-        #{sushikhaUser.phoneVerified},
-        #{sushikhaUser.emailVerified},
-        #{sushikhaUser.createdOn}
+        #{taskUser.taskUserId},
+        #{taskUser.name},
+        #{taskUser.email},
+        #{taskUser.dob},
+        #{taskUser.status},
+        #{taskUser.role},
+        #{taskUser.gender},
+        #{taskUser.createdOn}
         )
     </insert>
     <select id="selectUserByEmail" resultType="com.taskmanagement.models.TaskUser" parameterType="java.lang.String">
-        SELECT * FROM SUSHIKHA_USER WHERE EMAIL = #{email}
+        SELECT * FROM TASK_USER WHERE EMAIL = #{email}
     </select>
 
-    <select id="selectUserByPhone" resultType="com.taskmanagement.models.TaskUser" parameterType="java.lang.String">
-        SELECT * FROM SUSHIKHA_USER WHERE PHONE = #{phone}
-    </select>
+
 
     <select id="getUserByRegistrationId" resultType="com.taskmanagement.models.TaskUser" parameterType="java.lang.String">
-        SELECT * FROM SUSHIKHA_USER WHERE SUSHIKHA_USER_ID = #{sushikhaUserId}
+        SELECT * FROM TASK_USER WHERE TASK_USER_ID = #{taskUserId}
     </select>
 
-    <update id="update" parameterType="com.taskmanagement.models.TaskUser">
-        UPDATE SUSHIKHA_USER
-        <set>
-            <if test="sushikhaUser.email != null">
-                EMAIL = #{sushikhaUser.email},
-            </if>
-            <if test="sushikhaUser.phone != null">
-                PHONE = #{sushikhaUser.phone},
-            </if>
-            <if test="sushikhaUser.profilePic != null">
-                PROFILE_PIC = #{sushikhaUser.profilePic},
-            </if>
-            <if test="sushikhaUser.emailVerified != null">
-                EMAIL_VERIFIED = #{sushikhaUser.emailVerified},
-            </if>
-            <if test="sushikhaUser.phoneVerified != null">
-                PHONE_VERIFIED = #{sushikhaUser.phoneVerified},
-            </if>
-            <if test="sushikhaUser.status != null">
-                STATUS = #{sushikhaUser.status},
-            </if>
-            <if test="sushikhaUser.city != null">
-                CITY = #{sushikhaUser.city},
-            </if>
-            <if test="sushikhaUser.pincode != null">
-                PINCODE = #{sushikhaUser.pincode},
-            </if>
-            <if test="sushikhaUser.dob != null">
-                DOB = #{sushikhaUser.dob},
-            </if>
-            UPDATED_ON = #{sushikhaUser.updatedOn}
-        </set>
-        WHERE SUSHIKHA_USER_ID = #{sushikhaUser.sushikhaUserId}
-    </update>
-
-
-    <select id="getProfilePicByUserId" resultType="Byte[]" parameterType="java.lang.String">
-        SELECT PROFILE_PIC FROM SUSHIKHA_USER WHERE SUSHIKHA_USER_ID = #{sushikhaUserId}
-    </select>
 
     <select id="selectTotalCount" resultType="java.lang.Long">
-        SELECT COUNT(*) FROM SUSHIKHA_USER WHERE 1=1
-        <if test="sushikhaUserId != null">
-            AND SUSHIKHA_USER_ID = #{sushikhaUserId}
+        SELECT COUNT(*) FROM TASK_USER WHERE 1=1
+        <if test="taskUserId != null">
+            AND TASK_USER_ID = #{taskUserId}
         </if>
     </select>
 
     <select id="selectRecordsInRange"  resultType="com.taskmanagement.models.TaskUser">
-        SELECT ID, SUSHIKHA_USER_ID, NAME,  CITY, PINCODE, EMAIL, PHONE, STATUS, CREATED_ON, DOB, PHONE_VERIFIED, EMAIL_VERIFIED, UPDATED_ON
-        FROM SUSHIKHA_USER WHERE 1=1
-        <if test="sushikhaUserId != null">
-            AND SUSHIKHA_USER_ID = #{sushikhaUserId}
+        SELECT * FROM TASK_USER WHERE 1=1
+        <if test="taskUserId != null">
+            AND TASK_USER_ID = #{taskUserId}
         </if>
         <if test="pageSize != null and calculatedOffset != null">
             LIMIT #{pageSize} OFFSET #{calculatedOffset}
         </if>
     </select>
 
-    <update id="updateUserStatus" parameterType="com.taskmanagement.models.TaskUser">
-        UPDATE SUSHIKHA_USER
-        <set>
-            <if test="sushikhaUser.emailVerified != null">
-                EMAIL_VERIFIED = #{sushikhaUser.emailVerified},
-            </if>
-            <if test="sushikhaUser.phoneVerified != null">
-                PHONE_VERIFIED = #{sushikhaUser.phoneVerified},
-            </if>
-            <if test="sushikhaUser.status != null">
-                STATUS = #{sushikhaUser.status},
-            </if>
-            UPDATED_ON = #{sushikhaUser.updatedOn}
-        </set>
-        WHERE SUSHIKHA_USER_ID = #{sushikhaUser.sushikhaUserId}
 
-    </update>
-
-    <select id="selectUserIdByPhone" parameterType="java.lang.String"
-            resultType="java.lang.String">
-        SELECT SUSHIKHA_USER_ID FROM SUSHIKHA_USER
-        WHERE PHONE = #{phone}
-    </select>
 
 </mapper>

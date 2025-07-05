@@ -6,6 +6,7 @@
     </settings>
     <mappers>
         <mapper resource="mapconfig/mappers/task-user-dao.xml"/>
+        <mapper resource="mapconfig/mappers/task-dao.xml"/>
         <mapper resource="mapconfig/mappers/user-dao.xml"/>
         <mapper resource="mapconfig/mappers/session-dao.xml"/>
     </mappers>

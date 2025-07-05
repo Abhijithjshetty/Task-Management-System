@@ -6,19 +6,19 @@
 
     <insert id="insertUser" parameterType="com.taskmanagement.models.User"
             useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO LOAN_USER
+        INSERT INTO USER
         (USER_ID, USERNAME, PASSWORD, STATUS, USER_ROLE)
         VALUES(  #{user.userId},#{user.username},#{user.password},#{user.status},#{user.userRole});
     </insert>
 
     <select id="findByUsername" resultType="com.taskmanagement.models.User">
-        SELECT * FROM LOAN_USER
+        SELECT * FROM USER
         WHERE USERNAME = #{username} AND STATUS='ACTIVE'
         LIMIT 1
     </select>
 
     <select id="findByUserId" resultType="com.taskmanagement.models.User">
-        SELECT * FROM LOAN_USER
+        SELECT * FROM USER
         WHERE USER_ID = #{userId} AND STATUS='ACTIVE'
         LIMIT 1
     </select>

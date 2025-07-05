@@ -1,8 +1,8 @@
 package com.taskmanagement.core.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sushikhacapitals.common.security.AESUtil;
-import com.sushikhacapitals.common.utils.AutowireUtils;
+import com.taskmanagement.common.security.AESUtil;
+import com.taskmanagement.common.utils.AutowireUtils;
 import com.taskmanagement.core.security.handler.JwtLogoutHandler;
 import com.taskmanagement.core.utils.HashingUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -13,11 +13,7 @@ import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
-
-import java.util.Properties;
 
 @Configuration
 @Slf4j
@@ -31,24 +27,12 @@ public class AppplicationConfiguration implements InitializingBean {
     @Autowired
     private ApplicationContext context;
 
-
-    private final Integer emailPort;
-    private final String emailId;
-    private final String emailKey;
-    private final String emailHost;
     private final String secretKey;
 
     public AppplicationConfiguration(
-            @Value("${email.port}") Integer emailPort,
-            @Value("${email.id}") String emailId,
-            @Value("${email.key}") String emailKey,
-            @Value("${email.host}") String emailHost,
             @Value("${hashing.secret-key}") String secretKey
     ) {
-        this.emailId = emailId;
-        this.emailHost = emailHost;
-        this.emailKey = emailKey;
-        this.emailPort = emailPort;
+
         this.secretKey = secretKey;
     }
 
@@ -80,21 +64,6 @@ public class AppplicationConfiguration implements InitializingBean {
         return new ObjectMapper();
     }
 
-    @Bean
-    public JavaMailSender getJavaMailSender() throws Exception {
-        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost(emailHost);
-        mailSender.setPort(emailPort);
-        mailSender.setUsername(emailId);
-        mailSender.setPassword(emailKey);
-        Properties props = mailSender.getJavaMailProperties();
-        props.put("mail.transport.protocol", "smtp");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.debug", "true");
-        log.info("Java Email Sender bean created");
-        return mailSender;
-    }
 
     @Bean
     public HashingUtil hashingUtil() {

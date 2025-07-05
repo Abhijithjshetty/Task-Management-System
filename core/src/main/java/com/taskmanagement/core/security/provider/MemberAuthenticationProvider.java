@@ -1,7 +1,7 @@
 package com.taskmanagement.core.security.provider;
 
 
-import com.sushikhacapitals.common.security.AESUtil;
+import com.taskmanagement.common.security.AESUtil;
 
 import com.taskmanagement.core.security.authentication.PasswordBasedAuthentication;
 import com.taskmanagement.core.security.exception.AuthException;

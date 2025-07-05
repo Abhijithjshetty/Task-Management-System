@@ -1,7 +1,7 @@
 package com.taskmanagement.core.security;
 
 
-import com.sushikhacapitals.common.utils.AutowireUtils;
+import com.taskmanagement.common.utils.AutowireUtils;
 import com.taskmanagement.core.security.filters.JwtAuthenticationFilter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

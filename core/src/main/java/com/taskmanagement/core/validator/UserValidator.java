@@ -32,8 +32,8 @@ public class UserValidator {
 
     public void validateEmailUniqueness(String email) throws BusinessException {
         log.info(Constants.LOG_CLASS_USER_REGISTRATION_VALIDATION + "validateEmailUniqueness" + ": started");
-        Optional<TaskUser> sushikhaUserOptional = taskUserDao.selectUserByEmail(email);
-        if (sushikhaUserOptional.isPresent()) {
+        Optional<TaskUser> taskUserOptional = taskUserDao.selectUserByEmail(email);
+        if (taskUserOptional.isPresent()) {
             throw new BusinessException(Errors.EMAIL_ALREADY_IN_USE);
         }
         log.info(Constants.LOG_CLASS_USER_REGISTRATION_VALIDATION + "validateEmailUniqueness" + ": ended");

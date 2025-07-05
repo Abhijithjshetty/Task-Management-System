@@ -1,6 +1,6 @@
 package com.taskmanagement.core;
 
-import com.sushikhacapitals.common.security.AESUtil;
+import com.taskmanagement.common.security.AESUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,10 +13,6 @@ public class TestRunner implements CommandLineRunner {
 
     @Autowired
     AESUtil aesUtil;
-
-    @Autowired
-    private JavaMailSender emailSender;
-
 
     public TestRunner() {
     }

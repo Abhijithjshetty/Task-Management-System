@@ -20,26 +20,14 @@ public class UserRegistrationSecuredService {
     @Autowired
     private UserRegistrationManager userRegistrationManager;
 
-
     @GetMapping()
-    @PreAuthorize("hasAuthority('USER')")
+    @PreAuthorize("hasAuthority('USER') or hasAuthority('ADMIN')")
     public UserRegistrationListResponse getUserList(
             @RequestParam(value = "page_size", required = false) Long pageSize,
             @RequestParam(value = "offset", required = false) Long offset){
         log.info(Constants.LOG_CLASS_USER_REGISTRATION_SERVICE + "getUserList" + ":started");
         UserRegistrationListResponse response = userRegistrationManager.getUserList(offset, pageSize);
         log.info(Constants.LOG_CLASS_USER_REGISTRATION_SERVICE + "getUserList" + ":ended");
-        return response;
-    }
-
-    @GetMapping()
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public UserRegistrationListResponse getUserListByAdmin(
-            @RequestParam(value = "page_size", required = false) Long pageSize,
-            @RequestParam(value = "offset", required = false) Long offset){
-        log.info(Constants.LOG_CLASS_USER_REGISTRATION_SERVICE + "getUserListByAdmin" + ":started");
-        UserRegistrationListResponse response = userRegistrationManager.getUserList(offset, pageSize);
-        log.info(Constants.LOG_CLASS_USER_REGISTRATION_SERVICE + "getUserListByAdmin" + ":ended");
         return response;
     }
 

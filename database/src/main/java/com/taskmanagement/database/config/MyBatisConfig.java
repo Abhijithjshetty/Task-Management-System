@@ -4,7 +4,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan("com.sushikhacapitals.mappers.mysql")
+@MapperScan("com.taskmanagement.mappers.mysql")
 public class MyBatisConfig {
 }
 

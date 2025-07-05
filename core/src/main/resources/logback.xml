@@ -3,22 +3,22 @@
 
     <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss:SSS} [codervertex] [%-5p] [%t] [ Request ID: %X{request-id} ] [%c{1}:%L] - %m%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss:SSS} [taskmanagement] [%-5p] [%t] [ Request ID: %X{request-id} ] [%c{1}:%L] - %m%n</pattern>
         </encoder>
     </appender>
 
     <appender name="FileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/usr/local/tomcat/logs/app-logs/sushikha-core.log</file>
+        <file>/usr/local/tomcat/logs/app-logs/task-core.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/usr/local/tomcat/logs/app-logs/sushikha-core.log.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <fileNamePattern>/usr/local/tomcat/logs/app-logs/task-core.log.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
             <maxHistory>10</maxHistory>
         </rollingPolicy>
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss:SSS} [sushikhacapitals] [%-5p] [%t] [ Request ID: %X{request-id} ] [%c{1}:%L] - %m%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss:SSS} [taskmanagement] [%-5p] [%t] [ Request ID: %X{request-id} ] [%c{1}:%L] - %m%n</pattern>
         </encoder>
     </appender>
 
-    <logger name="com.sushikhacapitals" level="DEBUG" additivity="false">
+    <logger name="com.taskmanagement" level="DEBUG" additivity="false">
         <appender-ref ref="Console" />
         <appender-ref ref="FileAppender" />
     </logger>

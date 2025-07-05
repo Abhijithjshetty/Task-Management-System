@@ -1,5 +1,4 @@
-C:\capitals-backend\mappers\mysql\src\main\java\com\sushikhacapitals\mappers\mysql\ApplyLoanDao.java
-C:\capitals-backend\mappers\mysql\src\main\java\com\sushikhacapitals\mappers\mysql\OTPdao.java
-C:\capitals-backend\mappers\mysql\src\main\java\com\sushikhacapitals\mappers\mysql\SushikhaUserDao.java
-C:\capitals-backend\mappers\mysql\src\main\java\com\sushikhacapitals\mappers\mysql\SessionDao.java
-C:\capitals-backend\mappers\mysql\src\main\java\com\sushikhacapitals\mappers\mysql\LoanUserDao.java
+C:\Task-Management-System\mappers\mysql\src\main\java\com\taskmanagement\mappers\mysql\SessionDao.java
+C:\Task-Management-System\mappers\mysql\src\main\java\com\taskmanagement\mappers\mysql\TaskUserDao.java
+C:\Task-Management-System\mappers\mysql\src\main\java\com\taskmanagement\mappers\mysql\TaskDao.java
+C:\Task-Management-System\mappers\mysql\src\main\java\com\taskmanagement\mappers\mysql\UserDao.java

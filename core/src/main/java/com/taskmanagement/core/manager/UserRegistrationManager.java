@@ -1,7 +1,7 @@
 package com.taskmanagement.core.manager;
 
 
-import com.sushikhacapitals.common.security.AESUtil;
+import com.taskmanagement.common.security.AESUtil;
 import com.taskmanagement.core.config.Constants;
 import com.taskmanagement.core.exception.BusinessException;
 import com.taskmanagement.core.model.request.UserRegistrationRequest;
@@ -13,6 +13,7 @@ import com.taskmanagement.mappers.api.TaskUserDao;
 import com.taskmanagement.mappers.api.UserDao;
 import com.taskmanagement.models.TaskUser;
 import com.taskmanagement.models.User;
+import com.taskmanagement.models.enums.UserRole;
 import com.taskmanagement.models.enums.UserStatus;
 import com.taskmanagement.models.enums.UuidPrefix;
 import lombok.extern.slf4j.Slf4j;
@@ -68,37 +69,49 @@ public class UserRegistrationManager {
         }
     }
 
-
-
     public UserRegistrationListResponse getUserList(Long offset, Long pageSize) {
-        try{
+        try {
             log.info(Constants.LOG_CLASS_USER_REGISTRATION_MANAGER + "getUserList: started");
             final User user = authentication.getCurrentUser();
-            String sushikhaUserId = user.getUserId();
+
             UserRegistrationListResponse response = new UserRegistrationListResponse();
-            Long totalCount = taskUserDao.selectTotalCount(sushikhaUserId);
+            List<TaskUser> records;
+            Long totalCount;
+            Long calculatedOffset = (offset != null && pageSize != null) ? (offset > 0 ? offset * pageSize : pageSize) : null;
+
+            if (user.getUserRole().equals(UserRole.ADMIN)) {
+                totalCount = taskUserDao.selectTotalCount(null);
+                records = taskUserDao.selectRecordsInRange(null, calculatedOffset, pageSize);
+            } else {
+                totalCount = taskUserDao.selectTotalCount(user.getUserId());
+                records = taskUserDao.selectRecordsInRange(user.getUserId(), calculatedOffset, pageSize);
+            }
+
             response.setTotal(totalCount);
             if (totalCount == 0) {
-                log.info(Constants.LOG_CLASS_USER_REGISTRATION_MANAGER + "getUserList" + ": ended");
+                log.info(Constants.LOG_CLASS_USER_REGISTRATION_MANAGER + "getUserList: ended");
                 return response;
             }
 
-            Long calculatedOffset = (offset != null && pageSize != null) ? (offset > 0 ? offset * pageSize : pageSize) : null;
-            List<TaskUser> records = taskUserDao.selectRecordsInRange(sushikhaUserId, calculatedOffset, pageSize);
             List<UserRegistrationResponse> responses = new ArrayList<>();
             for (TaskUser record : records) {
                 responses.add(UserRegistrationConversionManager.mapUserEntityToRegistrationResponse(record));
             }
+
             response.setOffset(offset);
             response.setPageSize(pageSize);
             response.setUserRegistrationResponseList(responses);
 
-            log.info(Constants.LOG_CLASS_USER_REGISTRATION_MANAGER + "getUserList" + ": ended");
+            log.info(Constants.LOG_CLASS_USER_REGISTRATION_MANAGER + "getUserList: ended");
             return response;
+
         } catch (BusinessException ex) {
             log.error(Constants.LOG_CLASS_USER_REGISTRATION_MANAGER + " getUserList: Business Exception: " + ex);
             throw ex;
         }
     }
+
+
+
 }
 
