@@ -8,7 +8,7 @@
     <insert id="insert" parameterType="com.taskmanagement.models.TaskUser"
             useGeneratedKeys="true" keyProperty="id">
         INSERT INTO TASK_USER
-        (TASK_USER_ID, NAME, EMAIL, DOB, STATUS, ROLE, GENDER, CREATED_ON)
+        (TASK_USER_ID, NAME, EMAIL, DOB, STATUS, USER_ROLE, GENDER, CREATED_ON)
         VALUES(
         #{taskUser.taskUserId},
         #{taskUser.name},
