@@ -19,9 +19,7 @@ public class TestRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        log.info("dec pass {}",aesUtil.decrypt("G/Ok5BA6whqNhSlQf/aJPzCtc8I5xXaUHKJC4rkgy4yIHKbRSz/gH1fJHQ=="));
-        //Y3YKTFF8Q3TSA27HATTEE6W6  twilie
-        //https://console.twilio.com/
+
     }
 
 
