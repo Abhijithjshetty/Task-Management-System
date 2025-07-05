@@ -5,10 +5,8 @@
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
     <mappers>
-        <mapper resource="mapconfig/mappers/sushikha-user-dao.xml"/>
-        <mapper resource="mapconfig/mappers/loan-user-dao.xml"/>
+        <mapper resource="mapconfig/mappers/task-user-dao.xml"/>
+        <mapper resource="mapconfig/mappers/user-dao.xml"/>
         <mapper resource="mapconfig/mappers/session-dao.xml"/>
-        <mapper resource="mapconfig/mappers/otp-dao.xml"/>
-        <mapper resource="mapconfig/mappers/personal-details-dao.xml"/>
     </mappers>
 </configuration>

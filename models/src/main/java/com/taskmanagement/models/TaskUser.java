@@ -1,5 +1,7 @@
 package com.taskmanagement.models;
 
+import com.taskmanagement.models.enums.Gender;
+import com.taskmanagement.models.enums.UserRole;
 import com.taskmanagement.models.enums.UserStatus;
 import lombok.Data;
 import java.util.Date;
@@ -10,9 +12,9 @@ public class TaskUser {
     private String taskUserId;
     private String name;
     private String email;
-    private String phone;
+    private Gender gender;
     private Date dob;
+    private UserRole role;
     private UserStatus status;
     private Date createdOn;
-    private Date updatedOn;
 }

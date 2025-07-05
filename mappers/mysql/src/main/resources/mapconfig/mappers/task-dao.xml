@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taskmanagement.mappers.mysql.TaskDao">
+
+
+    <insert id="insert" parameterType="com.taskmanagement.models.Task"
+            useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO TASK (TASK_ID, TITLE, DESCRIPTION, STATUS, DUE_DATE, CREATED_BY, CREATED_ON )
+        VALUES (
+        #{task.taskId},
+        #{task.title},
+        #{task.description},
+        #{task.status},
+        #{task.dueDate},
+        #{task.createdBy},
+        #{task.createdOn}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.taskmanagement.models.Task">
+        UPDATE TASK
+        <set>
+            <if test="task.status != null">STATUS = #{task.status},</if>
+            <if test="task.updatedBy != null">UPDATED_BY = #{task.updatedBy},</if>
+            <if test="task.updatedOn != null">UPDATED_ON = #{task.updatedOn},</if>
+        </set>
+        WHERE TASK_ID = #{task.taskId}
+    </update>
+
+    <select id="selectTotalCount" resultType="long">
+        SELECT COUNT(*) FROM TASK WHERE 1=1
+        <if test="userId != null">
+            AND CREATED_BY = #{userId}
+        </if>
+    </select>
+
+    <select id="selectRecordsInRange" resultType="com.taskmanagement.models.Task">
+        SELECT * FROM TASK WHERE 1=1
+        <if test="userId != null">
+            AND CREATED_BY = #{userId}
+        </if>
+        <if test="calculatedOffset != null and pageSize != null">
+            LIMIT #{pageSize} OFFSET #{calculatedOffset}
+        </if>
+    </select>
+
+    <select id="getTaskById" resultType="com.taskmanagement.models.Task" parameterType="string">
+        SELECT * FROM TASK WHERE TASK_ID = #{taskId}
+    </select>
+
+    <update id="delete" parameterType="com.taskmanagement.models.Task">
+        UPDATE TASK
+        SET STATUS = 'DELETED',
+        UPDATED_BY = #{task.updatedBy},
+        UPDATED_ON = #{task.updatedOn}
+        WHERE TASK_ID = #{task.taskId}
+    </update>
+
+</mapper>

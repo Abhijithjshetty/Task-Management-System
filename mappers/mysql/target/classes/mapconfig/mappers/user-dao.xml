@@ -7,8 +7,8 @@
     <insert id="insertUser" parameterType="com.taskmanagement.models.User"
             useGeneratedKeys="true" keyProperty="id">
         INSERT INTO LOAN_USER
-        (USER_ID, USERNAME, PASSWORD, STATUS, USER_ROLE)
-        VALUES(  #{user.userId},#{user.username},#{user.password},#{user.status},#{user.userRole});
+        (USER_ID, USERNAME, OTP, STATUS, USER_ROLE)
+        VALUES(  #{user.userId},#{user.username},#{user.otp},#{user.status},#{user.userRole});
     </insert>
 
     <select id="findByUsername" resultType="com.taskmanagement.models.User">
@@ -23,8 +23,17 @@
         LIMIT 1
     </select>
 
+    <update id="updateLoanUser">
+        UPDATE LOAN_USER
+        SET OTP = #{user.otp}
+        WHERE USER_ID = #{user.userId}
+    </update>
 
-
+    <update id="updateUserOtp" parameterType="java.util.Map">
+        UPDATE LOAN_USER
+        SET OTP = #{newOtp}
+        WHERE USER_ID = #{userId}
+    </update>
 
 
 </mapper>

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sushikhacapitals.mappers.mysql.SessionDao">
+<mapper namespace="com.taskmanagement.mappers.mysql.SessionDao">
 
     <insert id="create"
             useGeneratedKeys="true">
@@ -17,7 +17,7 @@
         WHERE TOKEN = #{token};
     </delete>
 
-    <select id="getSession" resultType="com.sushikhacapitals.models.Session">
+    <select id="getSession" resultType="com.taskmanagement.models.Session">
         SELECT * FROM SESSION
         WHERE username = #{username} AND TOKEN = #{token}
         LIMIT 1;

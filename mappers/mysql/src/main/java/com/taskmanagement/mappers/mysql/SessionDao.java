@@ -1,7 +1,7 @@
 package com.taskmanagement.mappers.mysql;
 
-import com.sushikhacapitals.models.Session;
-import com.sushikhacapitals.models.enums.UserRole;
+import com.taskmanagement.models.Session;
+import com.taskmanagement.models.enums.UserRole;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
