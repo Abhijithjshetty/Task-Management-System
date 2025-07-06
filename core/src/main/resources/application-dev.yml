@@ -1,0 +1,35 @@
+spring:
+  jackson:
+    serialization:
+      indent-output: true
+
+server:
+  port: 8080
+
+task:
+  database:
+    url: jdbc:mysql://localhost:3306/task_management
+    username: task-admin
+    password: task112233
+
+
+logging:
+  level:
+    org:
+      springframework= INFO:
+
+
+jwt:
+  secret: c2VjcmV0a2V5dGlmYW50c3NlY3JldGtleXRpZmFudHNzZWNyZXRrZXl0aWZhbnRzc2VjcmV0a2V5dGlmYW50c3NlY3JldGtleXRpZmFudHNzZWNyZXRrZXl0aWZhbnRz
+  expiration: 24
+
+#SecretKey1234567
+encryption:
+  aes-key: U2VjcmV0S2V5MTIzNDU2Nw==
+  aes-iv: L5qE3vKdAg8=
+
+
+hashing:
+  secret-key: "SecretKeyHere"
+
+
