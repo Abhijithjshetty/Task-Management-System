@@ -6,6 +6,7 @@ import com.taskmanagement.core.model.request.TaskRequest;
 import com.taskmanagement.core.model.request.TaskUpdateRequest;
 import com.taskmanagement.core.model.response.TaskListResponse;
 import com.taskmanagement.core.model.response.TaskResponse;
+import com.taskmanagement.models.enums.TaskStatus;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -63,9 +64,10 @@ public class TaskService {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved tasks")
     })
     public TaskListResponse getAllTasks(@RequestParam(value = "page_size", required = false) Long pageSize,
-                                        @RequestParam(value = "offset", required = false) Long offset) {
+                                        @RequestParam(value = "offset", required = false) Long offset,
+                                        @RequestParam(value = "status", required = false) TaskStatus status) {
         log.info(Constants.LOG_CLASS_TASK_SERVICE + " getAllTasks : started");
-        TaskListResponse records = manager.getAllTasks(pageSize, offset);
+        TaskListResponse records = manager.getAllTasks(pageSize, offset, status);
         log.info(Constants.LOG_CLASS_TASK_SERVICE + " getAllTasks : ended");
         return records;
     }
@@ -78,9 +80,10 @@ public class TaskService {
             @ApiResponse(responseCode = "404", description = "Task not found")
     })
     public TaskListResponse getTaskById(@RequestParam(value = "page_size", required = false) Long pageSize,
-                                        @RequestParam(value = "offset", required = false) Long offset) {
+                                        @RequestParam(value = "offset", required = false) Long offset,
+                                        @RequestParam(value = "status", required = false) TaskStatus status) {
         log.info(Constants.LOG_CLASS_TASK_SERVICE + " getTaskById : started");
-        TaskListResponse response = manager.getTaskById(pageSize, offset);
+        TaskListResponse response = manager.getTaskById(pageSize, offset, status);
         log.info(Constants.LOG_CLASS_TASK_SERVICE + " getTaskById : ended");
         return response;
     }

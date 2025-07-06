@@ -64,20 +64,20 @@ public class TaskManager {
         return response;
     }
 
-    public TaskListResponse getTaskById(Long pageSize, Long offset) {
+    public TaskListResponse getTaskById(Long pageSize, Long offset, TaskStatus status) {
         try {
             log.info(Constants.LOG_CLASS_TASK_MANAGER + "getCalenderList" + ": started");
             final User user = authentication.getCurrentUser();
             String userId = user.getUserId();
             TaskListResponse response = new TaskListResponse();
-            Long totalCount = taskDao.selectTotalCount(userId);
+            Long totalCount = taskDao.selectTotalCount(status, userId);
             response.setTotal(totalCount);
             if (totalCount == 0) {
                 log.info(Constants.LOG_CLASS_TASK_MANAGER + "getCalenderList" + ": ended");
                 return response;
             }
             Long calculatedOffset = (offset != null && pageSize != null) ? (offset > 0 ? offset * pageSize : offset) : null;
-            List<Task> records = taskDao.selectRecordsInRange(userId, calculatedOffset, pageSize);
+            List<Task> records = taskDao.selectRecordsInRange(status, userId, calculatedOffset, pageSize);
             List<TaskResponse> responses = new ArrayList<>();
             for (Task record : records) {
                 responses.add(TaskConversionManager.mapTaskToTaskResponse(record));
@@ -93,19 +93,19 @@ public class TaskManager {
         }
     }
 
-    public TaskListResponse getAllTasks(Long pageSize, Long offset) {
+    public TaskListResponse getAllTasks(Long pageSize, Long offset, TaskStatus status) {
         try {
             log.info(Constants.LOG_CLASS_TASK_MANAGER + "getCalenderList" + ": started");
             final User user = authentication.getCurrentUser();
             TaskListResponse response = new TaskListResponse();
-            Long totalCount = taskDao.selectTotalCount(null);
+            Long totalCount = taskDao.selectTotalCount(status, null);
             response.setTotal(totalCount);
             if (totalCount == 0) {
                 log.info(Constants.LOG_CLASS_TASK_MANAGER + "getCalenderList" + ": ended");
                 return response;
             }
             Long calculatedOffset = (offset != null && pageSize != null) ? (offset > 0 ? offset * pageSize : offset) : null;
-            List<Task> records = taskDao.selectRecordsInRange(null, calculatedOffset, pageSize);
+            List<Task> records = taskDao.selectRecordsInRange(status,null, calculatedOffset, pageSize);
             List<TaskResponse> responses = new ArrayList<>();
             for (Task record : records) {
                 responses.add(TaskConversionManager.mapTaskToTaskResponse(record));

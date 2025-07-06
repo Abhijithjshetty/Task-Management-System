@@ -1,6 +1,7 @@
 package com.taskmanagement.mappers.mysql;
 
 import com.taskmanagement.models.Task;
+import com.taskmanagement.models.enums.TaskStatus;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -12,9 +13,10 @@ public interface TaskDao extends com.taskmanagement.mappers.api.TaskDao{
 
     void update(@Param("task") Task task);
 
-    Long selectTotalCount(@Param("userId") String userId);
+    Long selectTotalCount(@Param("status") TaskStatus status, @Param("userId") String userId);
 
-    List<Task> selectRecordsInRange(@Param("userId") String userId,
+    List<Task> selectRecordsInRange(@Param("status") TaskStatus status,
+                                    @Param("userId") String userId,
                                     @Param("calculatedOffset") Long calculatedOffset,
                                     @Param("pageSize") Long pageSize);
 

@@ -1,6 +1,8 @@
 package com.taskmanagement.mappers.api;
 
 import com.taskmanagement.models.Task;
+import com.taskmanagement.models.enums.TaskStatus;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -10,9 +12,9 @@ public interface TaskDao {
 
     void update(Task task);
 
-    Long selectTotalCount(String userId);
+    Long selectTotalCount(TaskStatus status, String userId);
 
-    List<Task> selectRecordsInRange(String userId, Long calculatedOffset, Long pageSize);
+    List<Task> selectRecordsInRange(TaskStatus status, String userId, Long calculatedOffset, Long pageSize);
 
     Optional<Task> getTaskById(String taskId);
 

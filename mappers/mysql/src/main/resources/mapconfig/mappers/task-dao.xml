@@ -34,12 +34,18 @@
         <if test="userId != null">
             AND CREATED_BY = #{userId}
         </if>
+        <if test="status != null">
+            AND STATUS = #{status}
+        </if>
     </select>
 
     <select id="selectRecordsInRange" resultType="com.taskmanagement.models.Task">
         SELECT * FROM TASK WHERE 1=1
         <if test="userId != null">
             AND CREATED_BY = #{userId}
+        </if>
+        <if test="status != null">
+            AND STATUS = #{status}
         </if>
         <if test="calculatedOffset != null and pageSize != null">
             LIMIT #{pageSize} OFFSET #{calculatedOffset}
