@@ -100,13 +100,16 @@ networks:
 
 ## 📬 Postman Collection
 
-👉 **Download or import Postman collection:**  
-[📂 TaskManager.postman_collection.json](docs/TaskManager.postman_collection.json)
+📂 The API collection file is available at:
 
-> Or use this public link if hosted on Postman:  
-> [🌐 Open in Postman](https://www.postman.com/collections/your-public-link)
+```
+postman/Task Management.postman_collection.json
+```
+
+> Import this file in Postman using **File → Import → Upload Files** to test all API endpoints.
 
 ---
+
 
 ## 🔑 API Endpoints Overview
 
