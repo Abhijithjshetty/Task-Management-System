@@ -1,0 +1,352 @@
+{
+	"info": {
+		"_postman_id": "51d16287-d646-45c7-9c1b-339cdd673e16",
+		"name": "Task Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30990715"
+	},
+	"item": [
+		{
+			"name": "Sign Up",
+			"item": [
+				{
+					"name": "insert",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Abhijith Shetty\",\r\n  \"email\": \"abhijith@example.com\",\r\n  \"date_of_birth\": \"1998-10-15\",\r\n  \"gender\": \"MALE\",\r\n  \"password\": \"Abc@123\",\r\n  \"role\": \"USER\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/task-core-api/public/sign_up",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"task-core-api",
+								"public",
+								"sign_up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJVU0VSTkFNRSI6IlVTUi0xIiwic3ViIjoiVVNSLTEiLCJpYXQiOjE3NTE4MTE1NDQsImV4cCI6MTc1MTg5Nzk0NH0.I7y5JHsVwEYRueQEpN5CL0Cud6DHlGzRxOBPNnDtrAAYOzjR2bbHeOWT58RofU7NskgnkqsSUmb25WTQT4TI2g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:8080/task-core-api/api/v1/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"task-core-api",
+								"api",
+								"v1",
+								"user"
+							]
+						},
+						"description": "The Get Request is used to retrieve all records associated with owner registration."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LogIn",
+			"item": [
+				{
+					"name": "log in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"USR-1\",\r\n  \"password\": \"Abc@123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/task-core-api/public/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"task-core-api",
+								"public",
+								"login"
+							]
+						},
+						"description": "The Post Request is used for validation of otp for verifying contact records along present in one/more tifant hubs associated with the owner."
+					},
+					"response": []
+				}
+			],
+			"description": "Contains all requests pertaining to Contact Verification OTP. This module is used to verify contact details of all records belonging to one/more tifant hubs associated with the owner. Contains requests namely post."
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "insert",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJVU0VSTkFNRSI6IlVTUi0xIiwic3ViIjoiVVNSLTEiLCJpYXQiOjE3NTE3MjI4MDEsImV4cCI6MTc1MTgwOTIwMX0.FcH-Wpk9GYYP-1zvbfxittTmRKC2kD2tOxvQmkhG3e4kzzDIjDJGjiYW6biXlQz77tVOcunqaudA_gLdLeIJyQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Fix in Login\",\r\n  \"description\": \"Resolve the issue causing login failure\",\r\n  \"due_date\": \"2025-07-15\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/task-core-api/api/v1/task",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"task-core-api",
+								"api",
+								"v1",
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJVU0VSTkFNRSI6ImFiaGlAZ21haWwuY29tIiwic3ViIjoiYWJoaUBnbWFpbC5jb20iLCJpYXQiOjE3NDEzMzI3MzksImV4cCI6MTc0MTQxOTEzOX0.PDj0k7vrkL1O9We9BnXl65S5yL3Rvz5TOoW_f0Ax6mKOrupYCiZoxlPeKfw-F7_CM6YQPaKsl4RIyZb48-0WsA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "payload",
+									"value": "{\n    \"name\": \"Abhilash Shetty\",\n    \"phone\": \"9008658743\",\n    \"email\": \"lashshetty2@example.com\",\n    \"address\": {\n        \"street\": \"123 Main Street\",\n        \"city\": \"Mangalore\",\n        \"state\": \"Tamilnad\",\n        \"pincode\": \"560001\",\n        \"country\": \"IND\"\n    },\n    \"date_of_birth\": \"2001-09-15\"\n}\n",
+									"type": "text"
+								},
+								{
+									"key": "profile_pic",
+									"type": "file",
+									"src": "/C:/Users/Lenovo/Downloads/Blue_and_White_Architect_LinkedIn_Banner_upscaled.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/employee-core-api/api/v1/employee/EMP-bd521565-b0f7-4f1b-aa33-99ea9f66f06c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"employee-core-api",
+								"api",
+								"v1",
+								"employee",
+								"EMP-bd521565-b0f7-4f1b-aa33-99ea9f66f06c"
+							]
+						},
+						"description": "The Put request is used for updation of a existing owner record."
+					},
+					"response": []
+				},
+				{
+					"name": "fetch",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJVU0VSTkFNRSI6IlVTUi0xIiwic3ViIjoiVVNSLTEiLCJpYXQiOjE3NTE4MTE1NDQsImV4cCI6MTc1MTg5Nzk0NH0.I7y5JHsVwEYRueQEpN5CL0Cud6DHlGzRxOBPNnDtrAAYOzjR2bbHeOWT58RofU7NskgnkqsSUmb25WTQT4TI2g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "PENDING",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/task-core-api/api/v1/task",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"task-core-api",
+								"api",
+								"v1",
+								"task"
+							]
+						},
+						"description": "The Get Request is used to retrieve all records associated with owner registration."
+					},
+					"response": []
+				},
+				{
+					"name": "fetch all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJVU0VSTkFNRSI6IlVTUi0xIiwic3ViIjoiVVNSLTEiLCJpYXQiOjE3NTE3MjI4MDEsImV4cCI6MTc1MTgwOTIwMX0.FcH-Wpk9GYYP-1zvbfxittTmRKC2kD2tOxvQmkhG3e4kzzDIjDJGjiYW6biXlQz77tVOcunqaudA_gLdLeIJyQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "PENDING",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/task-core-api/api/v1/task/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"task-core-api",
+								"api",
+								"v1",
+								"task",
+								"all"
+							]
+						},
+						"description": "The Get Request is used to retrieve all records associated with owner registration."
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJVU0VSTkFNRSI6IlVTUi0xIiwic3ViIjoiVVNSLTEiLCJpYXQiOjE3NTE3MjI4MDEsImV4cCI6MTc1MTgwOTIwMX0.FcH-Wpk9GYYP-1zvbfxittTmRKC2kD2tOxvQmkhG3e4kzzDIjDJGjiYW6biXlQz77tVOcunqaudA_gLdLeIJyQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:8080/task-core-api/api/v1/task/TASK-371ac17a-19cd-4372-a8f8-a077b739eea0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"task-core-api",
+								"api",
+								"v1",
+								"task",
+								"TASK-371ac17a-19cd-4372-a8f8-a077b739eea0"
+							]
+						},
+						"description": "The Get Request is used to retrieve all records associated with owner registration."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
