@@ -1,0 +1,25 @@
+# Maven target folder
+/target/
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker volumes
+/webapps/
+
+# Environment files (optional)
+/*.env
+
+# Local database backups (optional)
+/*.sql
+
+# Postman environment files
+*.postman_environment.json
